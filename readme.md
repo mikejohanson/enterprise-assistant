@@ -1,10 +1,31 @@
-# MeshCentral Satellite
+# Enterprise Assistant
 
-For more information, [visit MeshCentral.com](https://www.meshcentral.com).
+> Disclaimer: Production viable releases are tagged and listed under 'Releases'.  All other check-ins should be considered 'in-development' and should not be used in production
 
-MeshCentral Satellite is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to MeshCentral it will automatically create 802.1x profiles in the domain controller for Intel AMT devices and can use a certificate authority in your domain to issue 802.1x certificates to Intel AMT.
+Enterprise Assistant is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to RPS (hosted in either the cloud or enterprise), it can be used to assist with the configuration of AMT devices using TLS. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.
 
-## MeshCentral Configuration
+Enterprise Assistant is based off the open-source project [MeshCentral Satellite](https://github.com/Ylianst/MeshCentralSatellite).
+<br><br>
+
+**For detailed documentation** about Enterprise Assistant or other features of the Open AMT Cloud Toolkit, see the [docs](https://open-amt-cloud-toolkit.github.io/docs).
+
+<br>
+
+<!-- It will automatically create 802.1x profiles in the domain controller for Intel AMT devices and can use a certificate authority in your domain to issue 802.1x certificates to Intel AMT. -->
+
+## Enterprise Assistant Setup
+
+Enterprise Assistant must run on a computer that is joined to your domain and run it with sufficient rights that it can create LDAP computer objects and have access to the domain Certificate Authority so it can request that certificates be signed.
+
+It is suggested to run Enterprise Assistant as a normal Windows application at first to make sure everything works correctly before running it as a background Windows service. You can start by going in the "Settings" option in the menus and setting up the RPS server's hostname and login credentials. You also need to setup that certificate authority to use and certificate template. If a certificate authority is not setup, only PEAPv0/EAP-MSCHAPv2 will be supported.
+
+<!-- You can also indicate what domain security groups a computer must be joined to when a new 802.1x computer is created. -->
+
+You can use the "Testing" menu to create and remove a test computer from the domain. This is useful to make sure everything is working well before getting requests from RPS.
+
+
+
+<!-- ## MeshCentral Configuration
 
 This is an example of setting up 802.1x in Intel AMT without MeshCentral Satellite being involved. The MSCHAPv2 username and password is provided in the config.json of MeshCentral.
 
@@ -108,16 +129,6 @@ Another example is this:
 
 In this example, the Intel AMT wired interface is configured with 802.1x along with a single WIFI profile. This time, instead of EAP-TLS being used for authentication, PEAPv0/EAP-MSCHAPv2 will be used. MeshCentral Satellite will be queried, but this time, a 802.1x account will be created in the domain with a username and random password. The password will be sent back to MeshCentral and set into Intel AMT.
 
-## MeshCentral Satellite Setup
-
-You need to run MeshCentral Satellite on a computer that is joined to your domain and run it with sufficient rights that it can create LDAP computer objects and have access to the domain Certificate Authority so it can request that certificates be signed.
-
-You will probably want to run MeshCentral Satellite as a normal Windows application at first to make sure everything works before running it as a background Windows service. You can start by going in the "Settings" option in the menus and setting up the MeshCentral server's host name and login username and password. You also need to setup that certificate authority to use and certificate template. If a certificate authority is not setup, only PEAPv0/EAP-MSCHAPv2 will be supported.
-
-You can also indicate what domain security groups a computer must be joined to when a new 802.1x computer is created.
-
-Once done, you can login to MeshCentral and the MeshCentral Satellite is ready to receive requests. You can use the "Testing" menu to create and remove a test computer from the domain. This is useful to make sure everything is working well before getting requests from MeshCentral.
-
 ## Video Tutorials
 You can watch many tutorial videos on the [MeshCentral YouTube Channel](https://www.youtube.com/channel/UCJWz607A8EVlkilzcrb-GKg/videos). There is one video on how to setup Intel AMT with 802.1x without MeshCentral Satellite, this is a good way to get started. After that, you can take a look at the full demonstration of MeshCentral Satellite.
 
@@ -125,22 +136,4 @@ Basic Intel AMT 802.1x with JumpCloud.
 [![MeshCentral - Basic Intel AMT 802.1x with JumpCloud](https://img.youtube.com/vi/tKI9UJ1O15M/mqdefault.jpg)](https://www.youtube.com/watch?v=tKI9UJ1O15M)
 
 MeshCentral Satellite & Advanced Intel AMT 802.1x.  
-[![MeshCentral - Satellite & Advanced Intel AMT 802.1x](https://img.youtube.com/vi/1otWwjtFBIA/mqdefault.jpg)](https://www.youtube.com/watch?v=1otWwjtFBIA)
-
-## Feedback
-If you encounter a problem or have a suggestion to improve the product, you may file an [issue report](https://github.com/Ylianst/MeshCentral/issues/)
-
-If you are filing a problem report, you should include:
-* The version of the software you are using
-* The Operating System and version
-* The observed output
-* The expected output
-* Any troubleshooting you took to resolve the issue yourself
-* Any other similar reports
-
-If you are having issues with the following other products, you should file a report on their respective issue pages  
-[MeshCentralSatellite](https://github.com/Ylianst/MeshCentralSatellite/issues)
-[MeshCentral](https://github.com/Ylianst/MeshCentral/issues)
-
-## License
-This software is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+[![MeshCentral - Satellite & Advanced Intel AMT 802.1x](https://img.youtube.com/vi/1otWwjtFBIA/mqdefault.jpg)](https://www.youtube.com/watch?v=1otWwjtFBIA) -->
