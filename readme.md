@@ -1,5 +1,7 @@
 # Enterprise Assistant
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/rps/badge)](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/rps)
+
 > Disclaimer: Production viable releases are tagged and listed under 'Releases'.  All other check-ins should be considered 'in-development' and should not be used in production
 
 Enterprise Assistant is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to RPS (hosted in either the cloud or enterprise), it can be used to assist with the configuration of AMT devices using TLS. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.
